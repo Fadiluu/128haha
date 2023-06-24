@@ -1,0 +1,41 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    padding: .5em 1.5em;
+}
+
+.container{
+    width: 100%;
+    max-width: 25rem;
+    margin: 7em auto;
+}
+input[type="email"], input[type="password"]{
+    width: 90%;
+    padding: 1em;
+    border-radius: .5rem;
+    border: 0;
+    background-color: darkgray;
+    margin: 1em 0;
+}
+input[type="submit"]{
+    margin-top: 1em;
+    background-color: #B70404;
+    border-radius: .5rem;
+    border: 0;
+    width: 60%;
+    padding: 1em;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.submit__btn{
+    text-align: center;
+}
+.register-link {
+    margin-top: 1em;
+    text-align: center;
+}
+
+a:link, a:visited{
+    color: black;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "2nd-deliverable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-session": "^1.17.3",
+    "formidable": "^3.4.0",
+    "mysql": "^2.18.1",
+    "upper-case": "^2.0.2"
+  }
+}

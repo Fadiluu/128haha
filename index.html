@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3333/?css=plans_subscriptions_structure.css">
+    <link rel="stylesheet" href="http://localhost:3333/?css=plans_subscriptions_style.css">
+</head>
+<body>
+    <div class="main__body">
+        <!-- Nav bar-->
+        <nav class="nav_bar">
+            <div class="logo"><a href="" style="font-weight: bolder;">Communic8</a></div>
+            <ul class="nav__list nav__push--right">
+                <li><a href="../Index_Login/login.html">Login</a></li>
+                <li><a href="">Plans</a></li>
+                <li><a href="subscriptions.html">Subscriptions</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1 class="plan__heading--main" id="plans">Plans</h1>
+            <!--Mobile plans-->
+            <section class="mobile__section">
+                <h2 class="mobile__plans--header">Mobile plans</h2>
+                <div class="img-container"><img src="http://localhost:3333/?img=MobilePlans.jpg"/></div>
+                <div class="postpre__btn ">
+                    <br />
+                    <button class="postpaid__btn option__btn" onclick="postPaid()">Post-paid</button>
+                    <button class="prepaid__btn option__btn" onclick="prePaid()">Pre-paid</button>
+                </div>
+                <div class="mobile__cards main__grid">
+                    <div class="mobile__card" ></div>
+                    <div class="mobile__card" ></div>
+                    <div class="mobile__card " ></div>
+                    <div class="mobile__card " ></div>
+                </div>
+            </section>
+            <!-- TV & Wireless connection-->
+            <section class="tv__wifi--section">
+                <h2 class="tv__wifi--header">TV & Wireless connection</h2>
+                <div class="img-container">
+                    <img src="http://localhost:3333/?img=TVPackages.jpg"/>
+                </div>
+                <div class="tv__wifi--btn ">
+                    <br />
+                    <button class="wifi__btn option__btn" onclick="wifi()">Home-Internet</button>
+                    <button class="tv__btn option__btn" onclick="tv()">TV Packages</button>
+                </div>
+                <div class="tv__wifi--cards main__grid">
+                    <div class="tv__wifi__card"></div>
+                    <div class="tv__wifi__card"></div>
+                    <div class="tv__wifi__card"></div>
+                    <div class="tv__wifi__card"></div>
+                </div>
+            </section>
+        </main>
+        <script src="http://localhost:3333/?css=services_script.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+html{
+    font-size: 10px;
+}
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+img{
+    width: 100%;
+}
+h3{
+    margin: 0;
+}
+p{
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+}
+ul{
+    margin: 0;
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: white;
+    margin: 0;
+} 
+
+.main__body{
+    margin-right: auto;
+    margin-left: auto;
+}
+main{
+    padding: .75rem;
+}
+
+button{
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/*NAVBAR CONFIG*/
+.nav_bar{
+    padding: 1.5em .75em 1.5em .75em;
+    display: flex;
+    justify-content: space-between;
+}
+.nav__list{
+    display: flex;
+}
+.nav__list>li+li{
+    margin-left: 1em;
+    color: white;
+}
+
+/*THIS IS WHERE BODY SECTION STARTS*/
+.mobile__cards{
+    margin-top: 1em;
+}
+.tv__wifi--cards{
+    margin-top: 1em;
+}
+.mobile__card{
+    padding: 1em;
+    border-radius: 1rem;
+}
+.tv__wifi__card{
+    padding: 1em;
+    border-radius: 1rem;
+}
+
+.option__btn{
+    border-radius: .5rem;
+    /*padding: .25em 1em;*/
+    padding: .5em 1.75em;
+}
+.option__btn:last-child{
+    margin-left: 1em;
+}
+.subscription__btn{
+    border-radius: .5rem;
+    padding: .5em 1.75em;
+    text-align: right;
+}
+.sub__btn--right{
+    text-align: right;
+}
+
+/*unsubscribe button*/
+.unsubscribe__btn__container{
+    text-align: right;
+}
+.unsubscribe__btn--right{
+    border-radius: .5rem;
+    padding: .5em 1.75em;
+}
+
+.main__grid{
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    'card-1'
+    'card-2'
+    'card-3'
+    'card-4';
+}
+.main__grid:nth-child(1){
+    grid-area: card-1;
+}
+.main__grid:nth-child(2){
+    grid-area: card-2;
+}
+.main__grid:nth-child(3){
+    grid-area: card-3;
+}
+.main__grid:nth-child(4){
+    grid-area: card-4;
+}
+
+/*Medium Device*/
+@media (min-width:600px){
+
+   .main__grid{
+    grid-template-areas: 
+    'card-1 card-2'
+    'card-3 card-4';
+    gap: 2rem;
+   }
+   main{
+    padding: 1rem 4rem;
+}
+    /*NAVBAR CONFIG*/
+    .nav_bar{
+        padding: 1.5rem 4rem 1.5rem 4rem;
+    }
+}
+
+
+/*Large Device*/
+@media (min-width:992px){
+    html{
+        font-size: 16px;
+    }
+
+   .main__grid{
+    grid-template-areas: 
+    'card-1 card-2 card-3 card-4';
+    gap: 1rem;
+   }
+}
+

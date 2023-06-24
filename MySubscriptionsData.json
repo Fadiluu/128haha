@@ -1,0 +1,49 @@
+{
+  "Services" : {
+    "Mobile_Services":{
+      "PostPaid": [
+        {
+          "Name": "Bronze Plan",
+          "Data": "4 GB",
+          "Voice": "100 Flexi mins",
+          "Price": "100 AED",
+          "Time": "Monthy"
+        }
+      ],
+      "PrePaid": [
+        {
+          "Data": "Enjoy Unlimited data",
+          "Voice":"20minutes local",
+          "Price": "50 AED",
+          "Time":"30 days"
+        }
+      ]
+    },
+    "TV_Wireless_Services":{
+      "Home_Internet": [
+        {
+          "Name": "Smart Home",
+          "Data": "Unlimited",
+          "Speed": "Upto 250 Mbps",
+          "Router": "5G enables router",
+          "Price": "199 AED",
+          "Time": "Monthly"
+        }
+      ],
+      "TV_Packages":[
+        {
+          "Name": "English Package",
+          "Channels": "30+ channels",
+          "Price": "49 AED (VAT Inclusive)",
+          "Time": "Monthly"
+        },
+        {
+          "Name": "Asian Package",
+          "Channels": "60+ channels",
+          "Price": "69 AED (VAT Inclusive)",
+          "Time": "Monthly"
+        }
+      ]
+    }
+    }
+  }

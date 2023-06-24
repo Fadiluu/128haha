@@ -1,0 +1,129 @@
+{
+"Services" : {
+  "Mobile_Services":{
+  "PostPaid": [
+    {
+      "Name": "Bronze Plan",
+      "Data": "4 GB",
+      "Voice": "100 Flexi mins",
+      "Price": "100 AED",
+      "Time": "Monthy"
+    },
+    {
+      "Name": "Flexi Plan",
+      "Data": "8 GB",
+      "Voice": "500 Flexi mins",
+      "Price": "200 AED",
+      "Time": "Monthy"
+    },
+    {
+        "Name": "Premium Plan",
+        "Data": "32 GB",
+        "Voice": "Unlimited voice(local)",
+        "Price": "350 AED",
+        "Time": "Monthy"
+      },
+      {
+        "Name": "Premium Plus",
+        "Data": "64 GB",
+        "Voice": "Unlimited voice(200 Flexi)",
+        "Price": "499 AED",
+        "Time": "Monthy"
+      }
+  ],
+  "PrePaid": [
+    {
+      "Data": "Enjoy Unlimited data",
+      "Voice":"20minutes local",
+      "Price": "50 AED",
+      "Time":"30 days"
+    },
+    {
+      
+      "Data": "Enjoy 1GB/day data",
+      "Voice":" 30 mins local",
+      "Price": "70 AED",
+      "Time":"28 days"
+    },
+    {
+      "Data":"Enjoy 1GB data",
+      "Voice": "500 Flexi mins",
+      "Price": "100 AED",
+      "Time":"28 days"
+    },
+    {
+      "Data":"Enjoy 1GB data",
+      "Voice": "Unlimited voice ",
+      "Price": "60 AED",
+      "Time":"30 days"
+    }
+  ]
+  },
+  "TV_Wireless_Services":{
+  "Home_Internet": [
+    {
+      "Name": "Smart Home",
+      "Data": "Unlimited",
+      "Speed": "Upto 250 Mbps",
+      "Router": "5G enables router",
+      "Delivery": "Free Delivery",
+      "Price": "199 AED",
+      "Time": "Monthly"
+    },
+    {
+      "Name": "Elite Home",
+      "Data": "Unlimited",
+      "Speed": "Upto 500 Mbps",
+      "Router": "5G enables router",
+      "Delivery": "Free Delivery",
+      "Price": "299 AED",
+      "Time": "Monthly"
+    },
+    {
+      "Name": "Prime Home",
+      "Data": "Unlimited",
+      "Speed": "Upto 1 Gbps",
+      "Router": "5G enables router",
+      "Delivery": "Free Delivery",
+      "Price": "599 AED",
+      "Time": "Monthly"
+    },
+    {
+      "Name": "Prime Plus",
+      "Data": "Unlimited",
+      "Speed": "Upto 2 Gbps",
+      "Router": "5G enables router",
+      "Delivery": "Free Delivery",
+      "Price": "699 AED",
+      "Time": "Monthly"
+    }
+  ],
+  "TV_Packages":[
+    {
+      "Name": "English Package",
+      "Channels": "30+ channels",
+      "Price": "49 AED (VAT Inclusive)",
+      "Time": "Monthly"
+    },
+    {
+      "Name": "Asian Package",
+      "Channels": "60+ channels",
+      "Price": "69 AED (VAT Inclusive)",
+      "Time": "Monthly"
+    },
+    {
+      "Name": "Arabic Package",
+      "Channels": "100+ channels",
+      "Price": "100 AED (VAT Inclusive)",
+      "Time": "Monthly"
+    },
+    {
+      "Name": "Russian Package",
+      "Channels": "80",
+      "Price": "150 AED (VAT Inclusive)",
+      "Time": "Monthly"
+    }
+  ]
+}
+}
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="registration_structure_style.css"> -->
+    <link rel="stylesheet" href="http://localhost:3333/?css=registration_structure_style.css">
+</head>
+<body>
+    <div class="container">
+        <script>
+            function togglePasswordVisibility() {
+                var passwordInput = document.getElementById("password");
+                var showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+                
+                if (showPasswordCheckbox.checked) {
+                    passwordInput.type = "text";
+                } else {
+                    passwordInput.type = "password";
+                }
+            }
+        </script>
+        <h2>Registration Form</h2>
+        <h3>Enter Your Details:</h3>
+        <form action="register" method="post">
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td>Last Name:</td>
+            </tr>
+            <tr>
+                <td><input type="text" id="FirstName"name="fname" size="30" pattern="([A-Za-z])+"required></td>
+                <td><input type="text" id="LastName" name="lname" size="30" pattern="([A-Za-z])+"required></td>
+            </tr>
+            <tr>
+                <td>Date of Birth:</td>
+                <td>Email Address:</td>
+            </tr>
+            <tr>
+                <td><input type="date" id="DateofBirth" name="dob" size="30" required></td>&nbsp;
+                <td><input type="email" id="Email" name="email" size="30" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>Phone Number:</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="password" id="password" name="password" placeholder="Include letters, numbers and characters" size="30"  pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$" required>
+                    <input type="checkbox" id="showPasswordCheckbox" onchange="togglePasswordVisibility()">
+                    <label for="showPasswordCheckbox">Show Password</label>
+                </td>
+                <td class="phone-number-container">
+                    <input type="text" id="countrycode" value="(+971)"  disabled>
+                    <input type="text" class="number__area" id="phonenumber" name="phone" pattern="\d{10}"  required>
+                </td>
+        </table>
+        <div class="register__btn"><input type="submit" value="Register"></div>
+        </form>
+</body>
+</html>

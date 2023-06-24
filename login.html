@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://localhost:3333/?css=login_structure_style.css">
+</head>
+<body>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+            
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+    <div class="company-name">
+        <h1>Communic8</h1>
+    </div>
+    <div class="container">
+        <h2 class="login-header">Login</h2>
+        <form action="login" method="post">
+            <label for="username">Email</label>
+            <input type="email" id="username" placeholder="Email" required><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required><br />
+            <input type="checkbox" id="showPasswordCheckbox" onchange="togglePasswordVisibility()">
+            <label for="showPasswordCheckbox">Show Password</label><br>
+            <div class="submit__btn"><input type="submit" value="Login"></br></div>
+        </form>
+
+        <div class="register-link">
+            <a href="http://localhost:3333/?html=Registration.html">Not Registered? Register Now</a>
+        </div>
+    </div>
+</body>
+</html>
