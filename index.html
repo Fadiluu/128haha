@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://localhost:3333/?css=plans_subscriptions_structure.css">
+
     <link rel="stylesheet" href="http://localhost:3333/?css=plans_subscriptions_style.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
         <nav class="nav_bar">
             <div class="logo"><a href="" style="font-weight: bolder;">Communic8</a></div>
             <ul class="nav__list nav__push--right">
-                <li><a href="../Index_Login/login.html">Login</a></li>
+                <li><a href="logout">Logout</a></li>
                 <li><a href="">Plans</a></li>
                 <li><a href="subscriptions.html">Subscriptions</a></li>
             </ul>
@@ -27,39 +28,70 @@
             <!--Mobile plans-->
             <section class="mobile__section">
                 <h2 class="mobile__plans--header">Mobile plans</h2>
-                <div class="img-container"><img src="http://localhost:3333/?img=MobilePlans.jpg"/></div>
+                <div class="img-container"><img src="http://localhost:3333/?jpg=MobilePlans.jpg"/></div>
+                <div class="postpre__btn ">
+                    <br />
+                    <button class="prepaid__btn option__btn" onclick="prePaid()">Pre-paid</button>
+                </div>
+                    <div class="mobile__cards main__grid">
+                        <div class="mobile__card " ><form class="pre__paid--card" action="subscribe" method="post"></form></div>
+                        <div class="mobile__card " ><form class="pre__paid--card" action="subscribe" method="post"></form></div>
+                        <div class="mobile__card " ><form class="pre__paid--card" action="subscribe" method="post"></form></div>
+                        <div class="mobile__card " ><form class="pre__paid--card" action="subscribe" method="post"></form></div>
+                    </div>
+            </section>
+            <section class="mobile__section">
+                <h2 class="mobile__plans--header">Mobile plans</h2>
+                <div class="img-container"><img src="http://localhost:3333/?jpg=MobilePlans.jpg"/></div>
                 <div class="postpre__btn ">
                     <br />
                     <button class="postpaid__btn option__btn" onclick="postPaid()">Post-paid</button>
-                    <button class="prepaid__btn option__btn" onclick="prePaid()">Pre-paid</button>
                 </div>
-                <div class="mobile__cards main__grid">
-                    <div class="mobile__card" ></div>
-                    <div class="mobile__card" ></div>
-                    <div class="mobile__card " ></div>
-                    <div class="mobile__card " ></div>
-                </div>
+                    <div class="mobile__cards main__grid">
+                        <div class="mobile__card " ><form class="post__paid--card" action="subscribe" method="post"></form></div>
+                        <div class="mobile__card " ><form class="post__paid--card" action="subscribe" method="post"></form></div>
+                        <div class="mobile__card " ><form class="post__paid--card" action="subscribe" method="post"></form></div>
+                        <div class="mobile__card " ><form class="post__paid--card" action="subscribe" method="post"></form></div>
+                    </div>
+                
             </section>
             <!-- TV & Wireless connection-->
             <section class="tv__wifi--section">
                 <h2 class="tv__wifi--header">TV & Wireless connection</h2>
                 <div class="img-container">
-                    <img src="http://localhost:3333/?img=TVPackages.jpg"/>
+                    <img src="http://localhost:3333/?jpg=TVPackages.jpg"/>
                 </div>
                 <div class="tv__wifi--btn ">
                     <br />
                     <button class="wifi__btn option__btn" onclick="wifi()">Home-Internet</button>
+                </div>
+                    <div class="tv__wifi--cards main__grid">
+                        <div class="tv__wifi__card "><form class="wifi__card" action="subscribe" method="post"></form></div>
+                        <div class="tv__wifi__card "><form class="wifi__card" action="subscribe" method="post"></form></div>
+                        <div class="tv__wifi__card "><form class="wifi__card" action="subscribe" method="post"></form></div>
+                        <div class="tv__wifi__card "><form class="wifi__card" action="subscribe" method="post"></form></div>
+                    </div>
+
+            </section>
+            <section class="tv__wifi--section">
+                <h2 class="tv__wifi--header">TV & Wireless connection</h2>
+                <div class="img-container">
+                    <img src="http://localhost:3333/?jpg=TVPackages.jpg"/>
+                </div>
+                <div class="tv__wifi--btn ">
+                    <br />
                     <button class="tv__btn option__btn" onclick="tv()">TV Packages</button>
                 </div>
                 <div class="tv__wifi--cards main__grid">
-                    <div class="tv__wifi__card"></div>
-                    <div class="tv__wifi__card"></div>
-                    <div class="tv__wifi__card"></div>
-                    <div class="tv__wifi__card"></div>
+                    <div class="tv__wifi__card "><form class="tv__card" action="subscribe" method="post"></form></div>
+                    <div class="tv__wifi__card "><form class="tv__card" action="subscribe" method="post"></form></div>
+                    <div class="tv__wifi__card "><form class="tv__card" action="subscribe" method="post"></form></div>
+                    <div class="tv__wifi__card "><form class="tv__card" action="subscribe" method="post"></form></div>
                 </div>
             </section>
         </main>
-        <script src="http://localhost:3333/?css=services_script.js"></script>
+        <!-- <script src="http://localhost:3333/?js=services_script.js"></script> -->
     </div>
 </body>
 </html>
+

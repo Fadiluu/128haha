@@ -29,7 +29,7 @@ con.connect(function (err) {
 
     // Create plans table.
     var sql_table = "CREATE TABLE plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
-    "price VARCHAR (50)," +
+    "price VARCHAR(50)," +
     "subscription_period VARCHAR(10))" ;
     con.query(sql_table, function (err, result) {
         if (err) throw err;
@@ -80,8 +80,7 @@ con.connect(function (err) {
     });
 
     // Create home_internet_plan table.
-    var sql_table = "CREATE TABLE home_internet_plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
-    "name VARCHAR(50)," + 
+    var sql_table = "CREATE TABLE home_internet_plan (plan_name VARCHAR(50)PRIMARY KEY, " +  
     "data VARCHAR(50)," + 
     "speed VARCHAR(50)," + 
     "router VARCHAR(50)," + 
@@ -97,7 +96,6 @@ con.connect(function (err) {
 
     // Create tv_package_plan table.
     var sql_table = "CREATE TABLE tv_package_plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
-    "name VARCHAR(50)," + 
     "channels VARCHAR(50)," + 
     "FOREIGN KEY (plan_name) " + 
     "REFERENCES plan (plan_name) " +
@@ -105,7 +103,7 @@ con.connect(function (err) {
     "ON UPDATE NO ACTION) ";
     con.query(sql_table, function (err, result) {
         if (err) throw err;
-        console.log("TvPackages Table created");
+        console.log("TvPackage Table created");
     });
 
 });
