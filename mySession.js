@@ -1,8 +1,8 @@
 var  session =require("express-session");
 var mySession;
 
-exports.setSeesion = function(username){
-    session.userName = username;
+exports.setSession = function(email){
+    session.email = email;
     mySession = session;
     console.log("Session Created");
 }   

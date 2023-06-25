@@ -9,7 +9,7 @@ http.createServer(function(req, res) {
     var body='';
     var s;
 
-    if (req.url =="/register"){
+    if (req.url ==="/register"){
 
         req.on('data', function(chunk){
             body+=chunk.toString();
@@ -20,7 +20,20 @@ http.createServer(function(req, res) {
 
             myModule.registerUser(res,body,myModule.login)
         })
-    }else{
+    }else if(req.url === "/login"){
+        req.on('data', function(chunk){
+            body+=chunk.toString();
+        });
+
+        req.on('end', ()=>{
+            body = querystring.parse(body);
+
+            myModule.preAuthentication(res,body,mySess,myModule.postAuthentication)
+        })
+
+    }
+    else{
+    //    myModule.login(res);
         fs.readFile('reg.html', function(err,data){
             res.writeHead(200,{'Content-Type': 'text/html'})
             res.write(data)

@@ -46,14 +46,14 @@ http.createServer(function (req, res) {
                 res.end(content);
             }
         });
-    } else if (query.js != undefined) {
+    } else if (query.html != undefined) {
         console.log("JavaScript ------------");
-        file = query.js;
-        fs.readFile(javaScriptDir + file, function (err, content) {
+        file = query.html;
+        fs.readFile( file, function (err, content) {
             if (err) {
                 console.log(err);
             } else {
-                res.writeHead(200, { 'Content-type': 'application/javascript' });
+                res.writeHead(200, { 'Content-type': 'text/html' });
                 res.end(content);
             }
         });

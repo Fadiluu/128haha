@@ -28,7 +28,7 @@ con.connect(function (err) {
     });
 
     // Create plans table.
-    var sql_table = "CREATE TABLE plan (plan_id INT PRIMARY KEY, " + 
+    var sql_table = "CREATE TABLE plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
     "price DOUBLE," +
     "subscription_period VARCHAR(10))" ;
     con.query(sql_table, function (err, result) {
@@ -37,14 +37,15 @@ con.connect(function (err) {
     });
 
     // Create subscriptions table.
-    var sql_table = "CREATE TABLE subscription (email VARCHAR(50) PRIMARY KEY, " + 
-    "plan_id INT," + 
+    var sql_table = "CREATE TABLE subscription (email VARCHAR(50), " + 
+    "plan_name VARCHAR(50)," + 
+    "PRIMARY KEY (email,plan_name),"+
     "FOREIGN KEY (email) " +
     "REFERENCES user (email) " +
     "ON DELETE NO ACTION " + 
     "ON UPDATE NO ACTION, " +
-    "FOREIGN KEY (plan_id) " +
-    "REFERENCES plan (plan_id) " +
+    "FOREIGN KEY (plan_name) " +
+    "REFERENCES plan (plan_name) " +
     "ON DELETE NO ACTION " + 
     "ON UPDATE NO ACTION) ";
     con.query(sql_table, function (err, result) {
@@ -53,12 +54,11 @@ con.connect(function (err) {
     });
 
     // Create post_paid_plan table.
-    var sql_table = "CREATE TABLE post_paid_plan (plan_id INT PRIMARY KEY, " + 
-    "plan_name INT," + 
+    var sql_table = "CREATE TABLE post_paid_plan (plan_name VARCHAR(50) PRIMARY KEY, " + 
     "data VARCHAR(50)," + 
     "voice VARCHAR(50)," + 
-    "FOREIGN KEY (plan_id) " +
-    "REFERENCES plan (plan_id) " +
+    "FOREIGN KEY (plan_name) " +
+    "REFERENCES plan (plan_name) " +
     "ON DELETE NO ACTION " + 
     "ON UPDATE NO ACTION) ";
     con.query(sql_table, function (err, result) {
@@ -67,11 +67,11 @@ con.connect(function (err) {
     });
 
     // Create pre_paid_plan table.
-    var sql_table = "CREATE TABLE pre_paid_plan (plan_id INT PRIMARY KEY, " + 
+    var sql_table = "CREATE TABLE pre_paid_plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
     "data VARCHAR(50)," + 
     "voice VARCHAR(50)," +
-    "FOREIGN KEY (plan_id) " +
-    "REFERENCES plan (plan_id) " +
+    "FOREIGN KEY (plan_name) " +
+    "REFERENCES plan (plan_name) " +
     "ON DELETE NO ACTION " + 
     "ON UPDATE NO ACTION) ";
     con.query(sql_table, function (err, result) {
@@ -80,14 +80,14 @@ con.connect(function (err) {
     });
 
     // Create home_internet_plan table.
-    var sql_table = "CREATE TABLE home_internet_plan (plan_id INT PRIMARY KEY, " + 
+    var sql_table = "CREATE TABLE home_internet_plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
     "name VARCHAR(50)," + 
     "data VARCHAR(50)," + 
     "speed VARCHAR(50)," + 
     "router VARCHAR(50)," + 
     "delivery VARCHAR(50)," + 
-    "FOREIGN KEY (plan_id) " +
-    "REFERENCES plan (plan_id) " +
+    "FOREIGN KEY (plan_name) " +
+    "REFERENCES plan (plan_name) " +
     "ON DELETE NO ACTION " + 
     "ON UPDATE NO ACTION) ";
     con.query(sql_table, function (err, result) {
@@ -96,11 +96,11 @@ con.connect(function (err) {
     });
 
     // Create tv_package_plan table.
-    var sql_table = "CREATE TABLE tv_package_plan (plan_id INT PRIMARY KEY, " + 
+    var sql_table = "CREATE TABLE tv_package_plan (plan_name VARCHAR(50)PRIMARY KEY, " + 
     "name VARCHAR(50)," + 
     "channels VARCHAR(50)," + 
-    "FOREIGN KEY (plan_id) " + 
-    "REFERENCES plan (plan_id) " +
+    "FOREIGN KEY (plan_name) " + 
+    "REFERENCES plan (plan_name) " +
     "ON DELETE NO ACTION " + 
     "ON UPDATE NO ACTION) ";
     con.query(sql_table, function (err, result) {

@@ -26,17 +26,18 @@
     <div class="container">
         <h2 class="login-header">Login</h2>
         <form action="login" method="post">
+            <span id="error_message"></span>
             <label for="username">Email</label>
-            <input type="email" id="username" placeholder="Email" required><br>
+            <input type="email" name="email" id="username" placeholder="Email" required><br>
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password" required><br />
+            <input type="password" name="password" id="password" placeholder="Password" required><br />
             <input type="checkbox" id="showPasswordCheckbox" onchange="togglePasswordVisibility()">
             <label for="showPasswordCheckbox">Show Password</label><br>
             <div class="submit__btn"><input type="submit" value="Login"></br></div>
         </form>
 
         <div class="register-link">
-            <a href="http://localhost:3333/?html=Registration.html">Not Registered? Register Now</a>
+            <a href="http://localhost:3333/?html=reg.html">Not Registered? Register Now</a>
         </div>
     </div>
 </body>
