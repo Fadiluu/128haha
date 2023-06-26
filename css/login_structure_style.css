@@ -39,6 +39,11 @@ input[type="submit"]{
 a:link, a:visited{
     color: black;
 }
+.text-center{
+    text-align: center;
+    color: #B70404;
+}
+
 
 
 

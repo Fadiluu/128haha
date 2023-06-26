@@ -10,7 +10,6 @@ http.createServer(function(req, res) {
     var s;
 
     if (req.url ==="/register"){
-
         req.on('data', function(chunk){
             body+=chunk.toString();
 
@@ -53,12 +52,14 @@ http.createServer(function(req, res) {
             myModule.addPlan(res,body,mySess)
         })
     }else if(req.url == "/subscriptions"){
-        s = mySess.getMySession();
+        s = mySess.getSession();
         if (s !== undefined) {
-            if (s.userName != "" && s.userName !== undefined) {
-                myModule.getSubcriptions(res, s, myModule.navigateToSubscriptions);
+            if (s.email != "" && s.email !== undefined) {
+                myModule.getSubscriptions(res, s, myModule.navigateToSubscriptions);
             }
         }
+    }else if(req.url === "/goregister"){
+        myModule.navigateToRegister(res);
     }
     else{
         myModule.login(res);
@@ -68,5 +69,4 @@ http.createServer(function(req, res) {
         //     res.end();
         // })
     }
-
 }).listen(8080, () => console.log('Server is listening on port 8080'));

@@ -51,3 +51,6 @@ input[type="submit"] {
 .register__btn{
     text-align: center;
 }
+#email__taken{
+    color: #B70404;
+}

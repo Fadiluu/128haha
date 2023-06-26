@@ -18,16 +18,28 @@ exports.registerUser = function(res,body,Callback){
         dob = body.dob;
         password=body.password;
         phone = body.phone;
-    console.log("register");
-    con = this.connectToDB();
-    con.connect(function(err){
+        con = this.connectToDB();
+        con.connect(function(err){
         console.log('Connected to database')
         if(err) throw err;
-        var sql = "Insert INTO user(email,f_name,l_name,dob,emp_password,phone_number) VALUES('"+email+"','"+fname+"','"+lname+"','"+dob+"','"+password+"',"+phone+");"
-        con.query(sql, function(err,result){
-            if (err) throw err;
-            console.log("Inserted data");
-            Callback(res)
+        sql= 'SELECT email FROM user WHERE email ="'+email+'"'
+        con.query(sql,function(err,result){
+            if (err) throw err
+            if(result === undefined ){
+                var sql = "Insert INTO user(email,f_name,l_name,dob,emp_password,phone_number) VALUES('"+email+"','"+fname+"','"+lname+"','"+dob+"','"+password+"',"+phone+");"
+                con.query(sql, function(err,result){
+                    if (err) throw err;
+                    console.log("Inserted data");
+                    Callback(res)
+                })
+                }else{
+                    var message = "<script>document.getElementById(\"email__taken\").innerHTML = \"Email Address Already Taken!<br>\";</script> "
+                    fs.readFile('reg.html', function(err,data){
+                        res.writeHead(200,{'Content-Type': 'text/html'})
+                        res.write(data)
+                        res.end(message);
+                    })
+                }
         })
     })
     // con.destroy();
@@ -56,6 +68,13 @@ exports.logout = function (res) {
         return res.end();
     });
 };
+exports.navigateToRegister = function (res){
+    fs.readFile('reg.html', function(err,data){
+        res.writeHead(200,{'Content-Type': 'text/html'})
+        res.write(data)
+        res.end();
+    })
+}
 
 // 
 
@@ -66,10 +85,6 @@ exports.navigateToSubscriptions = function(res,mySess) {
         res.end();
     })
 };
-exports.getSubcriptions = function(res,mySess,Callback){
-
-    //call back is  navigate to subscription
-}
 
 exports.preAuthentication = function(res,body,mySess,Callback1,Callback2){
     var userEmail = body.email;
@@ -84,7 +99,7 @@ exports.preAuthentication = function(res,body,mySess,Callback1,Callback2){
             if(result !==undefined && result.length > 0){
                 Callback1(res, mySess, result[0].email, body,Callback2)
             }else{
-                var message = "<script>document.getElementById(\"error_message\").innerHTML = \"You have entered an incorrect username or password!\";</script> ";
+                var message = "<script>document.getElementById(\"error_message\").innerHTML = \"You have entered an incorrect username or password!<br>\";</script> ";
                 fs.readFile("login.html", function (err, data) {
                     res.writeHead(200, { 'Content-Type': 'text/html' });
                     res.write(data);
@@ -133,8 +148,6 @@ exports.postAuthentication = function(res,mySess,email,body,Callback) {
                     arr[3]= result
                     Callback(res, arr)
                 })
-        
-                console.log('Ends here')
             // })
             
         }
@@ -148,7 +161,6 @@ exports.navigateToHome = function(res,message){
     fs.readFile("index.html",function(err,data){
         res.writeHead(200,{'Content-Type':'text/html'})
         res.write(data)
-        console.log(message[3])
         res.write('<script>')
         for(i=0; i< message.length; i++){
             
@@ -220,17 +232,17 @@ exports.addPlan = function(res,body,mySess){
         var sql = "INSERT INTO subscription VALUES ('"+s.email+"','"+plan_name+"')";
         con.query(sql,function(err,result){
             if (err) throw err;
-            console.log('inserted');
+            console.log('Plan added');
         })
     }
 }
 
 exports.navigateToSubscriptions = function(res,results,mySess) { 
+    console.log('hoi');
     fs.readFile('subscriptions.html',function(err,data){
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.write(data);
         res.write("<script>");
-
        
         //post paid plans
         if(results[0] != null){
@@ -275,32 +287,40 @@ exports.navigateToSubscriptions = function(res,results,mySess) {
 
         //tv packages
         if(results[3] != null){
-        var tv_package_plans = results[3];
+            var tv_package_plans = results[3];
             for(var i = 0; i < tv_package_plans.length; i++){
                 var tv_package_plan = tv_package_plans[i];
                 for(var j = 0; j < tv_package_plan.length; j++){
+                    /*
                     res.write("document.getElementById(\"tv_package-name\").innerHTML += '" + tv_package_plan[i].name + "';");
                     res.write("document.getElementById(\"tv_package-paid-channels\").innerHTML += " + tv_package_plan[i].channels + "';");
                     res.write("document.getElementById(\"tv_package-paid-price\").innerHTML += " + tv_package_plan[i].price + "';");
                     res.write("document.getElementById(\"tv_package-subscription-period\").innerHTML += " + tv_package_plan[i].subscription_period + "';");
+                    */
+                    res.write("document.querySelector(\".tv-packages\").innerHTML += \"<div class=\"record\"><p>'" + tv_package_plan[i].name +
+                    "Channels: '" + tv_package_plan[i].channels + "'&emsp;" +
+                    "Price: : '" + tv_package_plan[i].price + "'&emsp;" +
+                    "Subscription period: '" + tv_package_plan[i].subscription_period + "'</p>;");
                 }
             }
         }
         res.write("</script>");
         res.end();
 
+        
+
         //make place holders in html itself with ids and then use that
     })
 };
-exports.getSubcriptions = function(res,mySess,Callback){
+exports.getSubscriptions = function(res,mySess,Callback){
 
     var results = new Array(4);
 
-    var sql = "SELECT p.plan_name, postp.data, postp.voice, p.price, p.subscription_period from " +  
+    var sql1 = "SELECT p.plan_name, postp.data, postp.voice, p.price, p.subscription_period from " +  
     "user u join subscription s on u.email = s.email " +
     "join plan p on s.plan_name = p.plan_name " +
-    "join post_paid_plan postp on p.plan_name = postp.plan_name WHERE u.email = " + mySess.email;
-    con.query(sql, function (err, result_1) {
+    "join post_paid_plan postp on p.plan_name = postp.plan_name WHERE u.email = '" + mySess.email+"'";
+    con.query(sql1, function (err, result_1) {
         if (err) throw err;
         if (result_1 !== undefined && result_1.length > 0) {
             results[0] = result_1;
@@ -308,11 +328,11 @@ exports.getSubcriptions = function(res,mySess,Callback){
         }
     });
 
-    var sql = "SELECT p.plan_name, prep.data, prep.voice, p.price, p.subscription_period from " +  
+    var sql2 = "SELECT p.plan_name, prep.data, prep.voice, p.price, p.subscription_period from " +  
     "user u join subscription s on u.email = s.email " +
     "join plan p on s.plan_name = p.plan_name " +
-    "join pre_piad_plan prep on p.plan_name = prep.plan_name WHERE u.email = " + mySess.email;
-    con.query(sql, function (err, result_2) {
+    "join pre_paid_plan prep on p.plan_name = prep.plan_name WHERE u.email = '" + mySess.email+"'";
+    con.query(sql2, function (err, result_2) {
         if (err) throw err;
         if (result_2 !== undefined && result_2.length > 0) {
             results[1] = result_2;
@@ -320,11 +340,11 @@ exports.getSubcriptions = function(res,mySess,Callback){
         }
     });
 
-    var sql = "SELECT p.plan_name, hp.data, hp.speed, hp.router, hp.delivery, p.price, p.subscription_period from " +  
+    var sql3 = "SELECT p.plan_name, hp.data, hp.speed, hp.router, hp.delivery, p.price, p.subscription_period from " +  
     "user u join subscription s on u.email = s.email " +
     "join plan p on s.plan_name = p.plan_name " +
-    "join home_internet_plan hp on p.plan_name = hp.plan_name WHERE u.email = " + mySess.email;
-    con.query(sql, function (err, result_3) {
+    "join home_internet_plan hp on p.plan_name = hp.plan_name WHERE u.email = '" + mySess.email+"'";
+    con.query(sql3, function (err, result_3) {
         if (err) throw err;
         if (result_3 !== undefined && result_3.length > 0) {
             results[2] = result_3;
@@ -332,14 +352,15 @@ exports.getSubcriptions = function(res,mySess,Callback){
         }
     });
 
-    var sql = "SELECT p.plan_name, tp.channel, p.price, p.subscription_period from " +  
+    var sql4 = "SELECT p.plan_name, tp.channels, p.price, p.subscription_period from " +  
     "user u join subscription s on u.email = s.email " +
     "join plan p on s.plan_name = p.plan_name " +
-    "join tv_package_plan tp on p.plan_name = tp.plan_name WHERE u.email = " + mySess.email;
-    con.query(sql, function (err, result_4) {
+    "join tv_package_plan tp on p.plan_name = tp.plan_name WHERE u.email = '" + mySess.email+"'";
+    con.query(sql4, function (err, result_4) {
         if (err) throw err;
         if (result_4 !== undefined && result_4.length > 0) {
             results[3] = result_4;
+        
             Callback(res,results,mySess);
             //myCallback(res, result, mySess); // result - employee object
         }
